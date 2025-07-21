@@ -3,3 +3,4 @@ install/
 log/
 *.pyc
 .vscode/
+.vscode/
