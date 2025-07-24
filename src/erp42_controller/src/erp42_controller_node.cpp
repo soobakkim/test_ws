@@ -109,9 +109,17 @@ private:
     // Send packet
     ssize_t bytes_written = write(fd_, buf.data(), buf.size());
     if (bytes_written < 0) {
+<<<<<<< HEAD
       RCLCPP_ERROR(get_logger(), "Failed to write to serial port: %s", strerror(errno));
     } else if (bytes_written != (ssize_t)buf.size()) {
       RCLCPP_WARN(get_logger(), "Incomplete write to serial port: wrote %zd of %zu bytes", bytes_written, buf.size());
+=======
+      RCLCPP_ERROR(get_logger(), "Failed to write to serial port: %s (errno: %d)", strerror(errno), errno);
+    } else if (bytes_written != (ssize_t)buf.size()) {
+      RCLCPP_WARN(get_logger(), "Incomplete write to serial port: wrote %zd of %zu bytes", bytes_written, buf.size());
+    } else {
+      RCLCPP_INFO(get_logger(), "Successfully wrote %zd bytes to serial port.", bytes_written);
+>>>>>>> 38fa373 (Initial commit)
     }
   }
 
